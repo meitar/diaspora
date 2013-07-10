@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 # Appserver
 
-gem 'unicorn', '4.6.2', :require => false
+gem 'unicorn', '4.6.3', :require => false
 
 # API and JSON
 
@@ -160,7 +160,7 @@ group :development do
   gem 'guard-rspec',    '3.0.1'
   gem 'rb-fsevent',     '0.9.3', :require => false
   gem 'rb-inotify',     '0.9.0', :require => false
-  
+
   # Preloading environment
 
   gem 'guard-spork', '1.5.0'
