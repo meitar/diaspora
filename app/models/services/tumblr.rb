@@ -22,9 +22,11 @@ class Services::Tumblr < Service
     
     body = build_tumblr_post(post, url)
     user_info = JSON.parse(access.get("/v2/user/info").body)
-    blogs = user_info["response"]["user"]["blogs"].map { |blog| URI.parse(blog['url']) }
-    blogs.each do |blog|
-      access.post("/v2/blog/#{blog.host}/post", body)
+    blogs = user_info["response"]["user"]["blogs"].each do |blog|
+      if blog['primary']
+        x = URI.parse(blog['url'])
+        access.post("/v2/blog/#{x.host}/post", body)
+      end
     end
   end
 
